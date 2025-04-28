@@ -7,17 +7,17 @@
 
 using namespace std;
 
-const int P = 5; // Number of processes
-const int R = 3; // Number of resources
+const int P = 5; // Indicates the number of processes
+const int R = 3; // Indicates the number of resources
 
-// Function to find if the system is in a safe state
+// Finds if the the processes are in a safe state
 bool isSafe(vector<int> &available, vector<vector<int>> &max, vector<vector<int>> &allocation, vector<vector<int>> &need) {
-    vector<int> work = available;
-    vector<bool> finish(P, false);
-    vector<int> safeSequence(P);
+    vector<int> work = available;        // Tracks available resources
+    vector<bool> finish(P, false);       // Tracks if processes are finished
+    vector<int> safeSequence(P);         // Stores safe sequence of processes
     int count = 0;
 
-    while (count < P) {
+    while (count < P) {    // loops through every process
         bool found = false;
         for (int p = 0; p < P; p++) {
             if (!finish[p]) {
@@ -44,7 +44,7 @@ bool isSafe(vector<int> &available, vector<vector<int>> &max, vector<vector<int>
         }
     }
 
-    cout << "System is in a safe state.\nSafe sequence is: ";
+    cout << "System is in a safe state.\nSafe sequence is: ";    // if every process is looped through then the process is in a safe state
     for (int i = 0; i < P; i++) {
         cout << "P" << safeSequence[i];
         if (i != P - 1) cout << " -> ";
@@ -54,7 +54,7 @@ bool isSafe(vector<int> &available, vector<vector<int>> &max, vector<vector<int>
 }
 
 int main() {
-    vector<int> available = {3, 3, 2}; // Available instances of resources A, B, C
+    vector<int> available = {3, 3, 2}; // Available instances of resources for processes A, B, C
 
     vector<vector<int>> max = {
         {7, 5, 3}, // Max demand of P0
