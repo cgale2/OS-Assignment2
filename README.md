@@ -7,4 +7,5 @@ Considering a system with five processes P0 through P4 and three resources of ty
 
 ### Run Commands
 $ gcc bankers -o bankers
+
 $ ./bankers
