@@ -55,23 +55,10 @@ bool isSafe(vector<int> &available, vector<vector<int>> &max, vector<vector<int>
 
 int main() {
     vector<int> available = {3, 3, 2}; // Available instances of resources for processes A, B, C
+    vector<vector<int>> max = { {7, 5, 3}, {3, 2, 2}, {9, 0, 2}, {2, 2, 2}, {4, 3, 3} }; // max demand of processes for P0-P4
+    vector<vector<int>> allocation = { {0, 1, 0}, {2, 0, 0}, {3, 0, 2}, {2, 1, 1}, {0, 0, 2} }; // current allocation for processes P0-P4
 
-    vector<vector<int>> max = {
-        {7, 5, 3}, // Max demand of P0
-        {3, 2, 2}, // Max demand of P1
-        {9, 0, 2}, // Max demand of P2
-        {2, 2, 2}, // Max demand of P3
-        {4, 3, 3}  // Max demand of P4
-    };
-
-    vector<vector<int>> allocation = {
-        {0, 1, 0}, // Current allocation for P0
-        {2, 0, 0}, // Current allocation for P1
-        {3, 0, 2}, // Current allocation for P2
-        {2, 1, 1}, // Current allocation for P3
-        {0, 0, 2}  // Current allocation for P4
-    };
-
+    // finds the values for the need matrix
     vector<vector<int>> need(P, vector<int>(R));
     for (int i = 0; i < P; i++) {
         for (int j = 0; j < R; j++) {
@@ -79,7 +66,7 @@ int main() {
         }
     }
 
-    isSafe(available, max, allocation, need);
+    isSafe(available, max, allocation, need); // determines if the system is safe or not
 
     return 0;
 }
